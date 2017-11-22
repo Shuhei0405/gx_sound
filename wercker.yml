@@ -2,6 +2,8 @@ box: ros:kinetic
 
 build:
   steps:
+    - install-packages:
+      packages: devscripts fakeroot python-bloom
     - script:
       name: setup ros environments
       code: |
