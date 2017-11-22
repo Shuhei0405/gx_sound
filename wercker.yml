@@ -9,11 +9,14 @@ build:
         mkdir -p /root/catkin_ws/src
         cd /root/catkin_ws/src
         catkin_init_workspace
-        ln -s $WERCKER_SOURCE_DIR /root/catkin_ws/src/gx_sound
-        cd /root/catkin_ws
-        catkin_make
+    - groove-x/catkin-make:
+      catkin_ws_path: /root/catkin_ws
     - script:
       name: run tests
       code: |
         source /root/catkin_ws/devel/setup.bash
         nosetests -svw gx_sound_player/test/
+    - groove-x/bloom-generate:
+      os_name: ubuntu
+      os_version: xenial
+      ros_distro: kinetic
