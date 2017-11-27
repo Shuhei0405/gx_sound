@@ -5,16 +5,7 @@ Sound player package for ROS.
 ## Installation
 
 ```bash
-$ cd path/to/your/catkin_ws/src
-$ git clone https://github.com/groove-x/gx_sound.git
-$ cd ../
-$ catkin_make
-```
-
-### Install dependencies
-
-```bash
-$ sudo apt install vorbis-tools
+$ apt install ros-kinetic-gx-sound
 ```
 
 ## ROS API
