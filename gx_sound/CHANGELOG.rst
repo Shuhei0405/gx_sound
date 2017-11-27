@@ -2,6 +2,9 @@
 Changelog for package gx_sound
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.2.0 (2017-11-21)
 ------------------
 * Initial commit
