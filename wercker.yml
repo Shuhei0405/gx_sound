@@ -22,3 +22,14 @@ build:
       os_name: ubuntu
       os_version: xenial
       ros_distro: kinetic
+      project_root: $WERCKER_ROOT/gx_sound
+    - groove-x/bloom-generate:
+      os_name: ubuntu
+      os_version: xenial
+      ros_distro: kinetic
+      project_root: $WERCKER_ROOT/gx_sound_msgs
+    - groove-x/bloom-generate:
+      os_name: ubuntu
+      os_version: xenial
+      ros_distro: kinetic
+      project_root: $WERCKER_ROOT/gx_sound_player
