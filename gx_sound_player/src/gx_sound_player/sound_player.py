@@ -75,28 +75,11 @@ class SoundPlayerNode(object):
     def __init__(self):
         rospy.init_node('~sound_player')
         self.device_name = rospy.get_param("~device_name")
-        self._find_device(self.device_name)
         self._sound_queue = SoundQueue()
         self._current_gh = None
         self._current_process = None
         self.server = actionlib.ActionServer('~sound_request', SoundRequestAction,
                                              self._callback_goal, self._callback_cancel, False)
-
-    @staticmethod
-    def _find_device(device_name):
-        u""" device_name が名称に含まれるデバイスを探す
-
-        :param str device_name: 検索するデバイスの名称
-        """
-        if not device_name:
-            raise ValueError("Please specify device name.")
-        command = "aplay -L"
-        process = subprocess.Popen(command.split(" "), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        stdout_data, _ = process.communicate()
-        for line in stdout_data.splitlines():
-            if line == device_name:
-                return True
-        raise ValueError("Device {} not found.".format(device_name))
 
     @staticmethod
     def _valid_sound(sound_path):
