@@ -2,6 +2,12 @@
 Changelog for package gx_sound_player
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Remove invalid find_device method
+* Add logging messages
+* Contributors: Yuma.M
+
 0.2.1 (2017-11-27)
 ------------------
 * Add missing dependency
