@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import shlex
 import subprocess
 import threading
 
@@ -110,8 +111,14 @@ class SoundPlayerNode(object):
         elif sound_path.endswith('ogg'):
             command = "ogg123 -d alsa -o dev:{} {}".format(self.device_name, sound_path)
         if command:
-            self._current_gh = gh
-            self._current_process = subprocess.Popen(command.split(" "))
+            try:
+                self._current_gh = gh
+                self._current_process = subprocess.Popen(shlex.split(command))
+            except Exception as e:
+                rospy.logerr('Failed to play sound. Executed command is "{}". {}'.format(command, e))
+            else:
+                if self._current_process.returncode:
+                    rospy.logwarn('Failed to play sound. Executed command is "{}"'.format(command))
 
     def _play(self):
         u""" キューに再生したいオーディオが存在すれば再生する """
